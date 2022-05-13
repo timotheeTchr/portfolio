@@ -16,5 +16,6 @@ export const theme = createTheme({
   },
   typography: {
     fontFamily: "'Montserrat', 'Roboto', 'Helvetica', 'Roboto', sans-serif",
+    fontWeightBold: 700
   }
 });

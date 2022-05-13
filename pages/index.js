@@ -1,8 +1,16 @@
+//Components from MUI
+import Box from '@mui/material/Box';
+
 const index = () => {
   return (
-    <header>
-      <h1>Bienvenue sur mon portfolio</h1>
-    </header>
+    <Box
+      sx={{
+        height: '100vh',
+        bgcolor: 'primary.main'
+      }}
+    >
+
+    </Box>
   );
 };
 

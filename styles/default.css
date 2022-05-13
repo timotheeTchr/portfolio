@@ -6,6 +6,7 @@
   box-sizing: border-box;
 }
 
-header {
-  background-color: #a95f5f;
+a {
+  color: #ffffff;
+  text-decoration: none;
 }
