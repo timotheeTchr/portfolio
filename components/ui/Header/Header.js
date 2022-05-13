@@ -11,11 +11,11 @@ import Container from '@mui/material/Container';
 
 const Header = () => {
   const links = [
-    { linkName: 'accueil', slug: '/' },
-    { linkName: 'projets', slug: '/projects' },
-    { linkName: 'blog', slug: '/blog' },
-    { linkName: 'formations', slug: '/courses' },
-    { linkName: 'contact', slug: '/contact' },
+    { linkLabel: 'accueil', slug: '/' },
+    { linkLabel: 'projets', slug: '/projects' },
+    { linkLabel: 'blog', slug: '/blog' },
+    { linkLabel: 'formations', slug: '/courses' },
+    { linkLabel: 'contact', slug: '/contact' },
   ];
 
   const pagesLinks = links.map((page, index) => {
@@ -26,7 +26,7 @@ const Header = () => {
         textTransform='capitalize'
         key={index}
       >
-        <Link href={page.slug}>{page.linkName}</Link>
+        <Link href={page.slug}>{page.linkLabel}</Link>
       </Typography>
     );
   });
