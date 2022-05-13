@@ -1,5 +1,6 @@
 //Libraries
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 //Components from MUI
 import AppBar from '@mui/material/AppBar';
@@ -10,23 +11,56 @@ import Divider from '@mui/material/Divider';
 import Container from '@mui/material/Container';
 
 const Header = () => {
+  const router = useRouter();
+
   const links = [
-    { linkLabel: 'accueil', slug: '/' },
-    { linkLabel: 'projets', slug: '/projects' },
-    { linkLabel: 'blog', slug: '/blog' },
-    { linkLabel: 'formations', slug: '/courses' },
-    { linkLabel: 'contact', slug: '/contact' },
+    { linkLabel: 'accueil', route: '/' },
+    { linkLabel: 'projets', route: '/projects' },
+    { linkLabel: 'blog', route: '/blog' },
+    { linkLabel: 'formations', route: '/courses' },
+    { linkLabel: 'contact', route: '/contact' },
   ];
 
   const pagesLinks = links.map((page, index) => {
     return (
       <Typography
+        sx={{
+          position: 'relative',
+          '&:hover': {
+            color: 'tertiary.main',
+          },
+          '&::after': {
+            content: '""',
+            width: router.route === page.route ? '100%' : '0px',
+            height: '1px',
+            position: 'absolute',
+            bottom: '0',
+            right: '0',
+            bgcolor: 'tertiary.main',
+            transformOrigin: 'left',
+            transition: 'all .3s',
+          },
+          '&:hover::after': {
+            width: '100%',
+            right: 'unset',
+            left: '0',
+          },
+        }}
         variant='body1'
-        color='secondary.main'
+        color={
+          router.route === page.route
+            ? 'tertiary.main'
+            : 'secondary.main'
+        }
+        fontWeight={
+          router.route === page.route
+            ? 'fontWeightBold'
+            : 'fontWeightRegular'
+        }
         textTransform='capitalize'
         key={index}
       >
-        <Link href={page.slug}>{page.linkLabel}</Link>
+        <Link href={page.route}>{page.linkLabel}</Link>
       </Typography>
     );
   });
