@@ -7,17 +7,18 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';
 import Divider from '@mui/material/Divider';
+import Container from '@mui/material/Container';
 
 const Header = () => {
-  const pages = [
-    'accueil',
-    'portfolio',
-    'blog',
-    'formations',
-    'contact',
+  const links = [
+    { linkName: 'accueil', slug: '/' },
+    { linkName: 'projets', slug: '/projects' },
+    { linkName: 'blog', slug: '/blog' },
+    { linkName: 'formations', slug: '/courses' },
+    { linkName: 'contact', slug: '/contact' },
   ];
 
-  const pagesLinks = pages.map((page, index) => {
+  const pagesLinks = links.map((page, index) => {
     return (
       <Typography
         variant='body1'
@@ -25,7 +26,7 @@ const Header = () => {
         textTransform='capitalize'
         key={index}
       >
-        <Link href={'/' + page}>{page}</Link>
+        <Link href={page.slug}>{page.linkName}</Link>
       </Typography>
     );
   });
@@ -37,55 +38,59 @@ const Header = () => {
       }}
       position='sticky'
     >
-      <Toolbar
-        sx={{
-          display: 'flex',
-        }}
-      >
-        <Typography
-          sx={{
-            textTransform: 'uppercase',
-          }}
-          variant='h5'
-          color='secondary.main'
-          fontWeight='fontWeightBold'
-        >
-          Timcode
-        </Typography>
-
-        <Stack
+      <Container maxWidth='xl'>
+        <Toolbar
           sx={{
             display: 'flex',
-            justifyContent: 'center',
-            flexGrow: 1,
           }}
-          direction='row'
-          spacing={4}
         >
-          {pagesLinks}
-        </Stack>
-
-        <Stack
-          direction='row'
-          spacing={1}
-          divider={
-            <Divider
-              sx={{ bgcolor: 'secondary.main' }}
-              orientation='vertical'
-              flexItem
-            />
-          }
-        >
-          <Typography color='secondary.main'>Se connecter</Typography>
-
           <Typography
-            color='tertiary.main'
+            sx={{
+              textTransform: 'uppercase',
+            }}
+            variant='h5'
+            color='secondary.main'
             fontWeight='fontWeightBold'
           >
-            S'inscrire
+            Timcode
           </Typography>
-        </Stack>
-      </Toolbar>
+
+          <Stack
+            sx={{
+              display: 'flex',
+              justifyContent: 'center',
+              flexGrow: 1,
+            }}
+            direction='row'
+            spacing={5}
+          >
+            {pagesLinks}
+          </Stack>
+
+          <Stack
+            direction='row'
+            spacing={1}
+            divider={
+              <Divider
+                sx={{ bgcolor: 'secondary.main' }}
+                orientation='vertical'
+                flexItem
+              />
+            }
+          >
+            <Typography color='secondary.main'>
+              Se connecter
+            </Typography>
+
+            <Typography
+              color='tertiary.main'
+              fontWeight='fontWeightBold'
+            >
+              S'inscrire
+            </Typography>
+          </Stack>
+        </Toolbar>
+      </Container>
     </AppBar>
   );
 };

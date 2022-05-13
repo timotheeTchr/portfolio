@@ -1,5 +1,6 @@
 //Components from MUI
 import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
 
 const index = () => {
   return (
@@ -9,7 +10,12 @@ const index = () => {
         bgcolor: 'primary.main'
       }}
     >
-
+      <Typography
+        variant='h1'
+        color='secondary.main'
+      >
+        Accueil
+      </Typography>
     </Box>
   );
 };
